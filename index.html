@@ -3,256 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arizona Agriculture April 2024 </title>
+    <title>Arizona Agriculture April 2024</title>
     <style>
+        .topnav {
+            height: 90px;
+            overflow: hidden;
+            background-color: Orange;
+        }
+
+        .topnav a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
 
         #flipbook {
-    
-    height: 90vh;
-    position: absolute;
-display: flex;
-    width: 30%;
-    max-width: 80%; /* Adjust the maximum width as needed */
-display: flex;
-    flex-direction: column;
-    align-items: center;
-justify-content: center;
-}
+            height: 90vh;
+            width: 60vh;
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease-in-out;
+        }
 
-#flipbook .page {
-    /* existing styles */
-    transition: transform 0.6s; /* Adjust the duration as needed */
-    /* Add necessary styles for the page */
-    position: absolute;
-    width: 40vh;
-    height: 100vh;
-    backface-visibility: hidden; /* This makes the back of the page invisible when flipped */
-    /* More styles as needed for the appearance of the page */
-}
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-     #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-}
+        .page {
+            position: absolute;
+            background-color: transparent;
+            border: 1px solid #ccc;
+            backface-visibility: hidden;
+            transform-origin: left center;
+            width: 100%;
+            height: 100%;
+        }
 
-#flipbook-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 80%; /* Adjust the maximum width as needed */
-    height: auto;
-    position: relative;
-    perspective: 1000px;
-}
+        #prevNextContainer {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 80%;
+            margin-top: 10px;
+            z-index: 99;
+        }
 
-#flipbook {
-    display: flex;
-    width: 80%;
-    max-width: 80%; /* Adjust the maximum width as needed */
-}
+        .control-button {
+            margin: 0 20px;
+            z-index: 999;
+            background-color: #ddd;
+            border: none;
+            padding: 20px 40px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+        }
 
-.page {
+        .pseudo-iframe {
+            border: 1px solid #ccc;
+            overflow: auto;
+            position: relative;
+            background: grey;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
 
-    width: auto;
-    height: 100vp;
-    position: absolute;
-    background-color: white;
-    border: px solid #ccc;
-    backface-visibility: hidden;
-    transform-origin: left center;
-}
-
-
-#prevNextContainer {
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally */
-    width: 100%;
-    max-width: 80%; /* Adjust the maximum width as needed */
-margin-left: 20vh;
-margin-bottom:-85vh;
-    z-index: 99; /* Ensure the container is above other elements */
-}
-
-.control-button {
-    margin: 0 20px; /* Space between buttons */
-    z-index: 999; /* This z-index is higher than the container's */
-    background-color: #ddd;
-    border: none;
-    padding: 20px 40px; /* Increased padding for larger buttons */
-    cursor: pointer;
-    font-size: 18px; /* Larger font size for better visibility */
-    border-radius: 8px; /* Optional: Rounded corners for aesthetics */
-}
+        .iframe-content {
+            padding: 20px;
+            height: 190%;
+        }
     </style>
 </head>
 <body>
-<div id="container">
-    <div id="flipbook">
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53906977913_be6e845285_o.png" style="height:90vh;width:60vh;" />
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53907138325_5944e7cfd9_o.png" alt="pg-2" style="height:90vh;width:60vh;"/>
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53906696066_1835bdaaed_o.png" alt="pg-3" style="height:90vh;width:60vh;">
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53906943788_3a3aa5895e_o.png" alt="pg-4" style="height:90vh;width:60vh;" >
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53905799807_2630f716f4_o.png" alt="pg-5" style="height:90vh;width:60vh;" >
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53905799837_8aa9e0a1e0_o.png" alt="pg-6" style="height:90vh;width:60vh;">
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53906984218_f6afd62c79_o.png" alt="pg-7" style="height:90vh;width:60vh;" >
-        </div>
-        <div class="page">
-            <img src="https://live.staticflickr.com/65535/53905799862_3e6251c467_o.png" alt="pg-8" style="height:90vh;width:60vh;" >
-        </div>
-        
-  <div id="prevNextContainer">
-    <button id="prevPage">Previous</button>
-    <button id="nextPage">Next</button>
+    <div class="topnav">
+        <button id="prevPage" class="control-button">Previous Page</button>
+        <button id="nextPage" class="control-button">Next Page</button>
+        <label for="zoom-slider">Zoom:</label>
+        <input type="range" id="zoom-slider" min="50" max="200" value="100" step="1">
+    </div>
 
- 
-<script>
-    let currentPage = 0;
-    const pages = document.querySelectorAll('.page');
-    const totalPages = pages.length;
-    const flipbook = document.getElementById('flipbook');
+    <div class="pseudo-iframe">
+        <div class="iframe-content">
+            <div id="pannable-container">
+                <div id="container">
+                    <div id="flipbook">
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53906977913_be6e845285_o.png" style="height:90vh;width:60vh;" />
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53907138325_5944e7cfd9_o.png" alt="pg-2" style="height:90vh;width:60vh;" />
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53906696066_1835bdaaed_o.png" alt="pg-3" style="height:90vh;width:60vh;">
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53906943788_3a3aa5895e_o.png" alt="pg-4" style="height:90vh;width:60vh;">
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53905799807_2630f716f4_o.png" alt="pg-5" style="height:90vh;width:60vh;">
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53905799837_8aa9e0a1e0_o.png" alt="pg-6" style="height:90vh;width:60vh;">
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53906984218_f6afd62c79_o.png" alt="pg-7" style="height:90vh;width:60vh;">
+                        </div>
+                        <div class="page">
+                            <img src="https://live.staticflickr.com/65535/53905799862_3e6251c467_o.png" alt="pg-8" style="height:90vh;width:60vh;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // Set initial z-index values for each page
-    pages.forEach((page, index) => {
-        page.style.zIndex = totalPages - index;
-    });
+    <div id="prevNextContainer">
+        <button id="prevPage">Previous</button>
+        <button id="nextPage">Next</button>
+    </div>
 
-    function flipToPage(pageNumber) {
-        if (pageNumber > currentPage) {
-            for (let i = currentPage; i < pageNumber; i++) {
-                pages[i].style.transform = 'rotateY(-180deg)';
+    <script>
+        let currentPage = 0;
+        const pages = document.querySelectorAll('.page');
+        const totalPages = pages.length;
+        const flipbook = document.getElementById('flipbook');
+
+        pages.forEach((page, index) => {
+            page.style.zIndex = totalPages - index;
+        });
+
+        function flipToPage(pageNumber) {
+            if (pageNumber > currentPage) {
+                for (let i = currentPage; i < pageNumber; i++) {
+                    pages[i].style.transform = 'rotateY(-180deg)';
+                }
+            } else if (pageNumber < currentPage) {
+                for (let i = currentPage - 1; i >= pageNumber; i--) {
+                    pages[i].style.transform = '';
+                }
             }
-        } else if (pageNumber < currentPage) {
-            for (let i = currentPage - 1; i >= pageNumber; i--) {
-                pages[i].style.transform = '';
+            currentPage = pageNumber;
+        }
+
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                flipToPage(currentPage - 1);
             }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < totalPages - 1) {
+                flipToPage(currentPage + 1);
+            }
+        });
+
+        flipToPage(0);
+
+        // Zoom and Pan Functionality
+        const zoomSlider = document.getElementById('zoom-slider');
+        let zoomFactor = 1;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        function updateZoom() {
+            flipbook.style.transform = `scale(${zoomFactor}) translate(${offsetX}px, ${offsetY}px)`;
         }
-        currentPage = pageNumber;
-    }
 
-    document.getElementById('prevPage').addEventListener('click', () => {
-        if (currentPage > 0) {
-            flipToPage(currentPage - 1);
-        }
-    });
-
-    document.getElementById('nextPage').addEventListener('click', () => {
-        if (currentPage < totalPages - 1) {
-            flipToPage(currentPage + 1);
-        }
-    });
-
-    // Initialize the flipbook to the first page
-    flipToPage(0);
-
-    // Zoom and Pan Functionality
-    const zoomSlider = document.getElementById('zoomSlider');
-    let zoomFactor = 1;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    function updateZoom() {
-        const transform = `scale(${zoomFactor}) translate(${offsetX}px, ${offsetY}px)`;
-        flipbook.style.transform = transform;
-    }
-
-    zoomSlider.addEventListener('input', () => {
-    targetZoomFactor = parseFloat(zoomSlider.value); // Ensure numeric value is used
-    smoothZoom();
-});
-
-    // Add panning functionality for mouse events
-    let isPanning = false;
-    let startX = 0;
-    let startY = 0;
-
-    flipbook.addEventListener('mousedown', (e) => {
-        isPanning = true;
-        startX = e.clientX - offsetX;
-        startY = e.clientY - offsetY;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (isPanning) {
-            offsetX = e.clientX - startX;
-            offsetY = e.clientY - startY;
+        zoomSlider.addEventListener('input', (e) => {
+            e.preventDefault(); // Prevent the default action of the event
+            zoomFactor = zoomSlider.value / 100;
             updateZoom();
-        }
-    });
+        });
 
-    document.addEventListener('mouseup', () => {
-        isPanning = false;
-    });
+        let isPanning = false;
+        let startX = 0;
+        let startY = 0;
 
-    // Add panning functionality for touch events
-    let isTouchPanning = false;
-    let touchStartX = 0;
-    let touchStartY = 0;
+        flipbook.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevent text selection, drag, etc.
+            isPanning = true;
+            startX = e.clientX - offsetX;
+            startY = e.clientY - offsetY;
+        });
 
-    flipbook.addEventListener('touchstart', (e) => {
-        isTouchPanning = true;
-        const touch = e.touches[0];
-        touchStartX = touch.clientX - offsetX;
-        touchStartY = touch.clientY - offsetY;
-    });
+        document.addEventListener('mousemove', (e) => {
+            if (isPanning) {
+                e.preventDefault(); // Prevent default mouse move actions
+                offsetX = e.clientX - startX;
+                offsetY = e.clientY - startY;
+                updateZoom();
+            }
+        });
 
-    flipbook.addEventListener('touchmove', (e) => {
-        if (isTouchPanning) {
+        document.addEventListener('mouseup', (e) => {
+            e.preventDefault(); // Prevent default mouse up actions
+            isPanning = false;
+        });
+
+        flipbook.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent default touch actions
             const touch = e.touches[0];
-            offsetX = touch.clientX - touchStartX;
-            offsetY = touch.clientY - touchStartY;
-            updateZoom();
-        }
-    });
+            isPanning = true;
+            startX = touch.clientX - offsetX;
+            startY = touch.clientY - offsetY;
+        });
 
-    flipbook.addEventListener('touchend', () => {
-        isTouchPanning = false;
-    });
+        flipbook.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling and other touch move actions
+            if (isPanning) {
+                const touch = e.touches[0];
+                offsetX = touch.clientX - startX;
+                offsetY = touch.clientY - startY;
+                updateZoom();
+            }
+        });
 
-    // Initial update for zoom
-    updateZoom();
+        flipbook.addEventListener('touchend', (e) => {
+            e.preventDefault(); // Prevent default touch end actions
+            isPanning = false;
+        });
 
-function lerp(start, end, factor) {
-    return (1 - factor) * start + factor * end;
-}
-
-let targetZoomFactor = zoomFactor;
-let zoomLerpFactor = 0.1; // Adjust this for smoother or faster zooming
-
-function smoothZoom() {
-    if (Math.abs(targetZoomFactor - zoomFactor) > 0.01) {
-        zoomFactor = lerp(zoomFactor, targetZoomFactor, zoomLerpFactor);
         updateZoom();
-        requestAnimationFrame(smoothZoom);
-    }
-}
-
-zoomSlider.addEventListener('input', () => {
-    targetZoomFactor = zoomSlider.value;
-    smoothZoom();
-});
-
-// Call smoothZoom instead of updateZoom in other parts of your code where zoomFactor is modified
-
-
-
     </script>
 </body>
 </html>
